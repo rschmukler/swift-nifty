@@ -59,9 +59,9 @@ increment(by: 5)
 println(counter) // prints 6
 ```
 
-#### Classes and Named Parameters
+#### Methods and Named Parameters
 
-To make swift look more "Objective-C like", Apple decided to have but the first
+To make swift look more "Objective-C like", Apple decided to have all but the first
 parameter be named by default on instance methods. For example:
 
 ```swift
