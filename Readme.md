@@ -6,11 +6,9 @@ features.
 
 # Table of Contents
 
-- [Named Arguments](#named-arguments)
+- [Named Parameters](#named-arguments)
 
-## Named Parameters
-
-By default, a function takes anonymous parameters:
+In swift, by default, a function takes anonymous parameters:
 
 ```swift
 func printTwoStrings(strA: String, strB: String, yay: String) {
@@ -20,9 +18,7 @@ func printTwoStrings(strA: String, strB: String, yay: String) {
 printTwoStrings("Hello", "World")
 ```
 
-Sometimes, it can be handy to specify a named parameter, for readability. You can
-do this by specifying the parameter name before declaring the local variable
-name.
+Sometimes, it can be more readable if you specify a named parameter. You can do this by specifying the parameter name before declaring the local variable name.
 
 ```swift
 func sayHello(to name: String) {
@@ -32,8 +28,7 @@ func sayHello(to name: String) {
 sayHello(to: "Bob")
 ```
 
-If you want to expose an external name, with the same name as your local
-variable, you can do so by prefixing the variable with a `#`.
+If you want to expose an external name, with the same name as your local variable, you can do so by prefixing the variable with a `#`.
 
 ```swift
 func sayHello(#to: String) {
@@ -61,8 +56,7 @@ println(counter) // prints 6
 
 #### Methods and Named Parameters
 
-To make swift look more "Objective-C like", Apple decided to have all but the first
-parameter be named by default on instance methods. For example:
+To make swift look more "Objective-C like", Apple decided to have all but the first parameter be named by default on instance methods. For example:
 
 ```swift
 class Person {
@@ -120,3 +114,5 @@ class Person {
 var bob = Person(name: "Bob")
 bob.say("Hello", "Paul")
 ```
+
+Named parameters are an interesting addition that allow for something of a hybrid between Ruby's splat operator and more traditional anonymous parameters found in other lanagues like C, Javascript, etc. This concludes my first post on Swift. Check back for more language features soon.
