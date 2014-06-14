@@ -151,3 +151,22 @@ following:
 
 `@infix` specifies that the function name goes **between** two things. Other possible
 keywords are `@prefix` and `@postfix`.
+
+Here is an example of a `@prefix` operator:
+
+```swift
+class Account {
+  var balance = 0.0
+
+  func init(bal: Float) {
+    balance = bal
+  }
+
+}
+@prefix func - (acc: Account) -> Account {
+  return Account(bal: -acc.balance)
+}
+
+var acc = Account(bal: 3000)
+println(-acc)
+```
