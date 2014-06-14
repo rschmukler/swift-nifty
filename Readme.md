@@ -7,6 +7,9 @@ features.
 # Table of Contents
 
 - [Named Parameters](#named-arguments)
+- [Custom Operators](#custom-operators)
+
+## Named Parameters
 
 In swift, by default, a function takes anonymous parameters:
 
@@ -115,4 +118,36 @@ var bob = Person(name: "Bob")
 bob.say("Hello", "Paul")
 ```
 
-Named parameters are an interesting addition that allow for something of a hybrid between Ruby's splat operator and more traditional anonymous parameters found in other lanagues like C, Javascript, etc. This concludes my first post on Swift. Check back for more language features soon.
+Named parameters are an interesting addition that allow for something of a hybrid between Ruby's splat operator and more traditional anonymous parameters found in other lanagues like C, Javascript, etc. 
+
+## Custom Operators
+
+Swift allows you to define operators for any type. Since it is statically typed,
+the compiler is able to use this information to determine when to apply which
+operator. For example, you could add a comparison operator for `NSDate` with the
+following:
+
+```swift
+@infix func > (left: NSDate, right: NSDate) -> Bool {
+  return left.compare(right) == NSComparisonResult.OrderedDescending
+}
+
+@infix func >= (left: NSDate, right: NSDate) -> Bool {
+  var comparisonResult = left.compare(right)
+  return comparisonResult == NSComparisonResult.OrderedDescending ||
+    comparisonResult == NSComparisonResult.OrderedSame
+}
+
+@infix func < (left: NSDate, right: NSDate) -> Bool {
+  return left.compare(right) == NSComparisonResult.OrderedAscending
+}
+
+@infix func <= (left: NSDate, right: NSDate) -> Bool {
+  var comparisonResult = left.compare(right)
+  return comparisonResult == NSComparisonResult.OrderedAscending ||
+    comparisonResult == NSComparisonResult.OrderedSame
+}
+```
+
+`@infix` specifies that the function name goes **between** two things. Other possible
+keywords are `@prefix` and `@postfix`.
