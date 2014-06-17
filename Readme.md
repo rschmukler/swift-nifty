@@ -170,3 +170,22 @@ class Account {
 var acc = Account(bal: 3000)
 println(-acc)
 ```
+
+And a `@postfix` operator:
+
+```swift
+class Account {
+  var balance = 0.0
+
+  func init(bal: Float) {
+    balance = bal
+  }
+
+}
+@postifx func ++ (acc: Account) -> () {
+  acc.balance++
+}
+
+var acc = Account(bal: 3000)
+acc++
+```
