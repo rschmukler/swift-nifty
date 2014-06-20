@@ -8,6 +8,7 @@ features.
 
 - [Named Parameters](#named-arguments)
 - [Custom Operators](#custom-operators)
+- [Closures as Parameters](#closures-as-parameters)
 
 ## Named Parameters
 
@@ -189,3 +190,7 @@ class Account {
 var acc = Account(bal: 3000)
 acc++
 ```
+
+## Closures as Parameters
+
+** Coming soon **
