@@ -193,4 +193,47 @@ acc++
 
 ## Closures as Parameters
 
-** Coming soon **
+Let's say that we have a function that takes a function as a parameter. It might
+look like this:
+
+```swift
+function myFunction(done: (String[], NSError?) -> ()) {
+  done(["Hello"], nil)
+}
+```
+
+Then, explicitly, calling the function might look like this:
+
+```swift
+myFunction((results: String[], err: NSError?) -> () {
+  // do something with results
+})
+```
+
+Swift, however, has a few nicer ways of passing anonymous closures...
+
+You can shorten that big function to something smaller using the `in` keyword.
+
+```swift
+myFunction({ results: String[], err: NSError? in 
+  // do something with results
+})
+```
+
+Since swift knows the type of closure `myFunction` is expecting, you can
+actually omit the types and let the compiler infer them:
+
+```swift
+myFunction({ results, err in
+  // do something with results
+})
+```
+
+Lastly, if the last parameter of a function is a closure, you can actually pass
+it after the closing parenthesis, for even nicer readability:
+
+```swift
+myFunction() { results, err in
+  // do something with results
+}
+```
