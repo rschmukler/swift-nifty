@@ -9,6 +9,8 @@ features.
 - [Named Parameters](#named-arguments)
 - [Custom Operators](#custom-operators)
 - [Closures as Parameters](#closures-as-parameters)
+- [Namespaced Classes](#namespaced-classes)
+
 
 ## Named Parameters
 
@@ -237,3 +239,59 @@ myFunction() { results, err in
   // do something with results
 }
 ```
+
+## Namespaced Classes
+
+In Swift you can create nested structs, enums, and classes inside of classes and
+structs. This lets you create namespaces.
+
+```swift
+class Farm {
+  var pen = Array<Animal>()
+  
+  init() {
+  }
+  
+  func addAnimal(animal: Animal) {
+    pen.append(animal)
+  }
+  
+  class Animal {
+    var name: String
+    
+    init(name: String) {
+      self.name = name
+    }
+  }
+  
+  class Horse: Animal {}
+  
+  class Dog: Animal {
+    var breed: String
+    
+    init(name: String, breed: String) {
+      self.breed = breed
+      super.init(name: name)
+    }
+  }
+}
+
+var farm = Farm()
+
+farm.addAnimal(Farm.Horse(name: "Bill"))
+```
+
+Inside the top-level class, you can access subclasses without the namespace distinction...
+
+```swift
+class Farm {
+  // ... same definition as above
+
+  convenience init(horseNamed name: String) {
+    self.init()
+    self.addAnimal(Horse(name: name))
+  }
+}
+
+var horseFarm = Farm(horseNamed: 'Bob')
+```swift
