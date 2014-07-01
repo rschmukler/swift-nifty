@@ -330,3 +330,18 @@ Since swift is a typed language, the compiler will actually allow you to omit th
 ```swift
 var larry = Person(favoriteColor: .Blue)
 ```
+
+You can also use this shorthand in switch statements:
+
+
+```swift
+var someColor = Color.Blue
+
+switch someColor {
+case .Red:
+  println("some color is red")
+case .Blue:
+  println("some color is blue")
+default:
+  println("some color is neither red nor blue")
+````
