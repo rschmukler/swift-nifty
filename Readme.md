@@ -10,6 +10,7 @@ features.
 - [Custom Operators](#custom-operators)
 - [Closures as Parameters](#closures-as-parameters)
 - [Namespaced Classes](#namespaced-classes)
+- [Inferred Enumerators](#inferred-enumerators)
 
 
 ## Named Parameters
@@ -295,3 +296,37 @@ class Farm {
 
 var horseFarm = Farm(horseNamed: 'Bob')
 ```swift
+
+## Inferred Enumerators
+
+Swift provides enums with the following syntax:
+
+```swift
+enum Color {
+  case Red, Orange, Yellow, Green, Blue, Purple
+}
+```
+
+Suppose you had a Person class that had a favorite color...
+
+```swift
+class Person {
+  var favoriteColor: Color
+
+  init(favoriteColor: Color) {
+    self.favoriteColor = favoriteColor
+  }
+}
+```
+
+You could then initialize a person in the following way:
+
+```swift
+var bob = Person(favoriteColor: Color.Red)
+```
+
+Since swift is a typed language, the compiler will actually allow you to omit the enum's name and just infer it from the type....
+
+```swift
+var larry = Person(favoriteColor: .Blue)
+```
