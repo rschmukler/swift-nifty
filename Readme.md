@@ -9,7 +9,7 @@ features.
 - [Named Parameters](#named-arguments)
 - [Custom Operators](#custom-operators)
 - [Closures as Parameters](#closures-as-parameters)
-- [Namespaced Classes](#namespaced-classes)
+- [Namespacing](#namespacing)
 - [Inferred Enumerators](#inferred-enumerators)
 
 
@@ -241,7 +241,7 @@ myFunction() { results, err in
 }
 ```
 
-## Namespaced Classes
+## Namespacing
 
 In Swift you can create nested structs, enums, and classes inside of classes and
 structs. This lets you create namespaces.
