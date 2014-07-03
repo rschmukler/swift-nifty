@@ -11,6 +11,7 @@ features.
 - [Closures as Parameters](#closures-as-parameters)
 - [Namespacing](#namespacing)
 - [Inferred Enumerators](#inferred-enumerators)
+- [Convenience Initializers](#convenience-initializers)
 
 
 ## Named Parameters
@@ -345,3 +346,47 @@ case .Blue:
 default:
   println("some color is neither red nor blue")
 ````
+
+### Convenience Initializers
+
+In swift, you can define additional initializers that will call designated initializers with sane defaults. For example, consider the following class:
+
+```swift
+class Person {
+  var name: String
+  
+  var age: Int
+  
+  init(name: String, age: Int) {
+    self.name = name
+    self.age = age
+  }
+  
+  convenience init() {
+    self.init(name: "John Doe", age: 20)
+  }
+  
+  convenience init(name: String) {
+    self.init(name: name, age: 20)
+  }
+  
+  convenience init(age: Int) {
+    self.init(name: "John Doe", age: age)
+  }
+}
+```
+
+You can now initialize a person in any of these ways:
+
+```swift
+var bob = Person(name: "Bob")
+println(bob.age) // 20
+
+var johnDoe = Person()
+println(johnDoe.name) // John Doe
+println(johnDoe.age) // 20
+
+var oldJohn = Person(age: 75)
+println(oldJohn.name) // John Doe
+println(oldJohn.age) // 75
+```
